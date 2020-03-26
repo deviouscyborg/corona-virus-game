@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3455406066061194050}
   - component: {fileID: 3455406066061194104}
   - component: {fileID: 3455406066061194111}
+  - component: {fileID: 6650668814343625081}
   m_Layer: 0
   m_Name: injection
   m_TagString: Knife
@@ -4868,3 +4869,20 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &6650668814343625081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3455406066061194049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d9e306fbcfd649f4b138f7db7d47887, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Injections:
+  - {fileID: 21300000, guid: cbdb1abc440994725bb1408b169d36d5, type: 3}
+  - {fileID: 21300000, guid: b782ef1f636e5407aae67230e523dbc9, type: 3}
+  - {fileID: 21300000, guid: e89d8295acc1a477d8923a4d7578afd5, type: 3}
+  Render: {fileID: 0}
