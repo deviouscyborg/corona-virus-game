@@ -56,6 +56,7 @@ public class GameController : MonoBehaviour {
     private void SpawnKnife()
     {
         knifeCount--;
+        Score.score++;
         Instantiate(knifeObject, knifeSpawnPosition, Quaternion.identity);
     }
  

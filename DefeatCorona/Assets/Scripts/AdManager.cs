@@ -11,10 +11,12 @@ public class AdManager : MonoBehaviour
     private BannerView bannerAD;
     private InterstitialAd interstitialAd;
     private RewardBasedVideoAd rewardVideoAD;
+    public static int interstitialAdCounter = 0;
+    public static int videoAdCounter = 0;
     // Start is called before the first frame update
     void Start()
     {
-        // MobileAds.Initialize(initStatus => { });
+        MobileAds.Initialize(APP_ID);
 
         RequestBanner();
         RequestInterstitial();
@@ -23,44 +25,44 @@ public class AdManager : MonoBehaviour
     }
 
     void RequestBanner() {
-        string banner_Id = "ca-app-pub-3940256099942544/6300978111";
+        string banner_Id = "ca-app-pub-4500169197993541/5159194581";
         bannerAD = new BannerView(banner_Id, AdSize.Banner, AdPosition.Top);
 
         //for real
-        // AdRequest adRequest = new AdRequest.Builder().Build();
+        AdRequest adRequest = new AdRequest.Builder().Build();
 
         //for testing
-        AdRequest adRequest = new AdRequest.Builder()
-        .AddTestDevice("33BE2250B43518CCDA7DE426D04EE232").Build();
+        // AdRequest adRequest = new AdRequest.Builder()
+        // .AddTestDevice("33BE2250B43518CCDA7DE426D04EE232").Build();
 
         bannerAD.LoadAd(adRequest);
     }
 
 
     void RequestInterstitial() {
-        string interstitial_Id = "ca-app-pub-3940256099942544/1033173712";
+        string interstitial_Id = "ca-app-pub-4500169197993541/8300911987";
         interstitialAd = new InterstitialAd(interstitial_Id);
 
         //for real
-        // AdRequest adRequest = new AdRequest.Builder().Build();
+        AdRequest adRequest = new AdRequest.Builder().Build();
 
         //for testing
-        AdRequest adRequest = new AdRequest.Builder()
-        .AddTestDevice("33BE2250B43518CCDA7DE426D04EE232").Build();
+        // AdRequest adRequest = new AdRequest.Builder()
+        // .AddTestDevice("33BE2250B43518CCDA7DE426D04EE232").Build();
 
         interstitialAd.LoadAd(adRequest);
     }
 
     void RequestVideoAd() {
-        string video_Id = "ca-app-pub-3940256099942544/5224354917";
+        string video_Id = "ca-app-pub-4500169197993541/6013412571";
         rewardVideoAD = RewardBasedVideoAd.Instance;
 
         //for real
-        // AdRequest adRequest = new AdRequest.Builder().Build();
+        AdRequest adRequest = new AdRequest.Builder().Build();
 
         //for testing
-        AdRequest adRequest = new AdRequest.Builder()
-        .AddTestDevice("33BE2250B43518CCDA7DE426D04EE232").Build();
+        // AdRequest adRequest = new AdRequest.Builder()
+        // .AddTestDevice("33BE2250B43518CCDA7DE426D04EE232").Build();
 
         rewardVideoAD.LoadAd(adRequest, video_Id);
     }
@@ -70,15 +72,25 @@ public class AdManager : MonoBehaviour
     }
 
     public void Display_Interstital() {
-        if(interstitialAd.IsLoaded()) {
+        interstitialAdCounter++;
+        if(interstitialAdCounter == 3 && videoAdCounter != 5) {
+            if(interstitialAd.IsLoaded()) {
             interstitialAd.Show();
+            interstitialAdCounter = 0;
         }
+        }
+        
     }
 
     public void Display_Reward_Video() {
-        if(rewardVideoAD.IsLoaded()){
+        videoAdCounter++;
+        if(videoAdCounter == 5 && interstitialAdCounter != 3) {
+            if(rewardVideoAD.IsLoaded()){
             rewardVideoAD.Show();
+            videoAdCounter = 0;
         }
+        }
+        
     }
 
 

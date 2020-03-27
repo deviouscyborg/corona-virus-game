@@ -19,6 +19,7 @@ public class GameUI : MonoBehaviour {
     public void ShowRestartButton()
     {
         restartButton.SetActive(true);
+        Score.score = 0;
     }
  
     //add a number of iconKnife children to panelKnives
